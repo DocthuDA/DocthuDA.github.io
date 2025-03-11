@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zhang Boshi | Personal Website</title>
+    <style>
+        :root {
+            --primary: #4a86e8;
+            --secondary: #6c757d;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --accent: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.5;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            margin-bottom: 0.5rem;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+        
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        section {
+            padding: 2rem 0;
+        }
+        
+        section:nth-child(odd) {
+            background-color: white;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 0.25rem;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .card p {
+            color: var(--secondary);
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .date {
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+        
+        .tag {
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 0.2rem 0.4rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            margin-right: 0.4rem;
+            margin-bottom: 0.4rem;
+        }
+        
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 0.75rem;
+        }
+        
+        .skill-item {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 0.75rem;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            font-size: 0.9rem;
+        }
+        
+        .skill-item i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin: 0 0.75rem;
+            font-size: 0.9rem;
+        }
+        
+        .contact-item i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.25rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        
+        .project-card {
+            border-left: 4px solid var(--primary);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .project-content {
+            flex: 1;
+            padding-right: 1rem;
+        }
+        
+        .project-image {
+            width: 200px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+            flex-shrink: 0;
+        }
+        
+        .bullet-list {
+            padding-left: 1.25rem;
+            margin-top: 0.25rem;
+            font-size: 0.9rem;
+        }
+        
+        .bullet-list li {
+            margin-bottom: 0.25rem;
+        }
+        
+        .emoji {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                padding: 0.5rem;
+            }
+            
+            .nav-links {
+                margin-top: 0.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .nav-links li {
+                margin-left: 0.75rem;
+                margin-right: 0.75rem;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            
+            [style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .project-card {
+                flex-direction: column;
+            }
+            
+            .project-image {
+                width: 200px;
+                height: 120px;
+                object-fit: contain;
+                margin-top: 1rem;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">ZHANG BOSHI</div>
+            <ul class="nav-links">
+                <li><a href="#about"><span class="emoji">👨‍💻</span>About</a></li>
+                <li><a href="#education"><span class="emoji">🎓</span>Education</a></li>
+                <li><a href="#projects"><span class="emoji">🚀</span>Projects</a></li>
+                <li><a href="#skills"><span class="emoji">💡</span>Skills</a></li>
+                <li><a href="#interests"><span class="emoji">🏀</span>Interests</a></li>
+                <li><a href="#contact"><span class="emoji">📧</span>Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <header>
+        <div class="container">
+            <img src="me.jpg" alt="Zhang Boshi" class="profile-img">
+            <h1>Zhang Boshi</h1>
+            <p><span class="emoji">🏫</span>Undergraduate Student at Tsinghua University</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>zbs22@mails.tsinghua.edu.cn</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>17837613616</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <span>DocZbs</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section id="about">
+        <div class="container">
+            <h2><span class="emoji">👨‍💻</span>About Me</h2>
+            <div class="card">
+                <p style="font-family: 'Cormorant Garamond', serif; line-height: 1.7; font-size: 1.05rem; margin-bottom: 14px;">
+                    ✨ Passionate researcher and developer with professional training and lots of hard practise 💦. 
+                </p>
+                <p style="font-family: 'Cormorant Garamond', serif; line-height: 1.7; font-size: 1.05rem; margin-bottom: 14px;">
+                    😁 Thriving at finding more exciting ideas and work out interesting problems. 
+                </p>
+                <p style="font-family: 'Cormorant Garamond', serif; line-height: 1.7; font-size: 1.05rem;">
+                    👥 Serving as a dedicated student leader, honed ability to inspire and guide peers, fostering a collaborative environment.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="education">
+        <div class="container">
+            <h2><span class="emoji">🎓</span>Education</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="card">
+                    <h3><span class="emoji">🏫</span>Tsinghua University</h3>
+                    <p class="date">2022.09-Present</p>
+                    <p>Bachelor of Engineering (Automation)</p>
+                    <p>GPA: <span class="highlight"> 3.90</span>  | Rank: <span class="highlight">TOP 15%</span></p>
+                    <div class="tags">
+                        <span class="tag">OOP</span>
+                        <span class="tag">DSA</span>
+                        <span class="tag">Control Theory</span>
+                        <span class="tag">Stochastic Math</span>
+                        <span class="tag">Operations Research</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span class="emoji">🏫</span>Huangchuan High School, Henan</h3>
+                    <p class="date">2019.09-2022.06</p>
+                    <p>Outstanding Student of Henan Province (2022-2023)</p>
+                    <p>Mathematics & Chemistry (2nd Prize) in National Olympiad (2021-2022)</p>
+                </div>
+            </div>
+            
+            <h2><span class="emoji">🏆</span>Awards & Honors</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="card">
+                    <h3><span class="emoji">🎖️</span>Academic Awards</h3>
+                    <ul class="bullet-list">
+                        <li>National Inspirational Scholarship (2022-2023)</li>
+                        <li>Tsinghua University Scholarship (2022-2023, 2023-2024)</li>
+                        <li>3rd Prize in National Physics Competition (2023-2024)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><span class="emoji">🏅</span>Competition Awards</h3>
+                    <ul class="bullet-list">
+                        <li>Runner-up in Department of Automation Summer Electronic System Design Competition - Hovercraft Group (2024.7)</li>
+                        <li>Best Display Award in Department Athletic Team</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects">
+        <div class="container">
+            <h2><span class="emoji">🚀</span>Research & Projects</h2>
+            <div class="card project-card">
+                <div class="project-content">
+                    <h3 style="font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; font-style: italic;"><span class="emoji">🔬</span>Beijing Natural Science Foundation(24QY0267)</h3>
+                    <p class="date">2024.10-Present</p>
+                    <p><span class="highlight">Project Leader</span> | <span class="highlight">First Author</span></p>
+                    <p style="font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; font-style: italic;">Efficient Training Strategies for Diffusion Models Based on Dynamic Networks</p>
+                </div>
+                <img src="project1.png" alt="Project 1" class="project-image">
+            </div>
+            
+            <div class="card project-card">
+                <div class="project-content">
+                    <h3 style="font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; font-style: italic;"><span class="emoji">🔍</span>Hybrid Guided Variational Autoencoder for Rapid Visual Place Recognition</h3>
+                    <p class="date">2025 (Under Review)</p>
+                    <p><span class="highlight">Second Author</span> | IEEE Robotics and Automation Letters</p>
+                    <p style="font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; font-style: italic;">Research on efficient visual place recognition algorithms using hybrid guided VAE architecture</p>
+                </div>
+                <img src="project2.png" alt="Project 2" class="project-image">
+            </div>
+            
+            <div class="card project-card">
+                <div class="project-content">
+                    <h3 style="font-family: 'Times New Roman', Times, serif; font-style: italic;"><span class="emoji">📚</span>Tsinghua University Academic Promotion Program</h3>
+                    <p class="date">2024.3-2024.12</p>
+                    <p><span class="highlight">Project Leader</span> </p>
+                    <ul class="bullet-list">
+                        <li> Focus on faster training of DIT</li>
+                    </ul>
+                </div>
+                <img src="project3.jpg" alt="Project 3" class="project-image">
+            </div>
+            
+            <div class="card project-card">
+                <div class="project-content">
+                    <h3 style="font-family: 'Times New Roman', Times, serif; font-style: italic;"><span class="emoji">🧠</span>Student Research Training Program (SRT)</h3>
+                    <p class="date">2023.9-2024.8</p>
+                    <ul class="bullet-list">
+                        <li>Systematically studied the principles and algorithms of deep learning and large models</li>
+                        <li>Implemented and tested diffusion model benchmarks</li>
+                    </ul>
+                </div>
+                <img src="project5.jpg" alt="Project 5" class="project-image">
+            </div>
+            
+            <div class="card project-card">
+                <div class="project-content">
+                    <h3 style="font-family: 'Times New Roman', Times, serif; font-style: italic;"><span class="emoji">🎮</span>Computer Science Department Game Design Project</h3>
+                    <p class="date">2023.2-2023.6</p>
+                    <ul class="bullet-list">
+                        <li>Developed an adventure game based on EasyX library (C++)</li>
+                        <li>Independently programmed character skills and core game mechanics</li>
+                        <li>Created background music and game materials</li>
+                    </ul>
+                </div>
+                <img src="project6.jpg" alt="Project 6" class="project-image">
+            </div>
+        </div>
+    </section>
+    
+    <section id="leadership">
+        <div class="container">
+            <h2><span class="emoji">👨‍🏫</span>Leadership Experience</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="card">
+                    <h3><span class="emoji">📋</span>Class Monitor, Class 24</h3>
+                    <p class="date">2024.6-Present</p>
+                    <ul class="bullet-list">
+                        <li>Best Display Award in Department Athletic Team</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><span class="emoji">🧩</span>Director of Academic Creation Department, Student Association</h3>
+                    <p class="date">2024.6-Present</p>
+                    <ul class="bullet-list">
+                        <li>Summer Programming Lecturer for Freshmen</li>
+                        <li>Outstanding Student Association Backbone of Tsinghua University</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills">
+        <div class="container">
+            <h2><span class="emoji">💡</span>Technical Skills</h2>
+            <div class="skill-grid">
+                <div class="skill-item">
+                    <i class="fas fa-code"></i>
+                    <span>C++</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-python"></i>
+                    <span>Python</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-fire"></i>
+                    <span>PyTorch</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>LaTeX</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-users"></i>
+                    <span>Collaborative Development</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="interests">
+        <div class="container">
+            <h2><span class="emoji">🏀</span>Interests & Activities</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="card">
+                    <h3><span class="emoji">🏀</span>Basketball</h3>
+                    <ul class="bullet-list">
+                        <li>Runner-up in Tsinghua Ma Yaohan Cup Freshman Tournament (Starter)</li>
+                        <li>Champion in Tsinghua Henan Association Cup Men's Basketball Tournament (Starter)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><span class="emoji">🎸</span>Music & Gaming</h3>
+                    <ul class="bullet-list">
+                        <li>Guitar</li>
+                        <li>Digital gaming enthusiast with game development experience</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2><span class="emoji">📧</span>Contact Information</h2>
+            <div class="card">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>zbs22@mails.tsinghua.edu.cn</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>17837613616</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <span>DocZbs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Zhang Boshi - Department of Automation, Tsinghua University</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-weixin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 4px 10px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
